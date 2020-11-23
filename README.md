@@ -1,4 +1,4 @@
-# Multi_Thread_C-
+# Multi_Thread
 Multi-Thread examples by using C++
 
 main.cpp -> Just an example about allocating threads and execution.
