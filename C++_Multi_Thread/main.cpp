@@ -1,40 +1,41 @@
 #include<iostream>
 #include<thread>
 using namespace std;
-//ÀÌÀü¿¡´Â C++ Ç¥ÁØ¿¡ ¾²·¹µå°¡ ¾ø¾î¼­, °¢ ÇÃ·§Æû ¸¶´Ù ´Ù¸¥ ±¸ÇöÀ» »ç¿ë(windows ->CreateThread ·Î ¾²·¹µå¸¦ »ý¼º /  Linux -> pthread_create)
-// ¸®´ª½º¿¡¼­ ÄÄÆÄÀÏ ->  ÄÄÆÄÀÏ ¿É¼Ç¿¡ -pthread ¸¦ Ãß°¡)
+//ì´ì „ì—ëŠ” C++ í‘œì¤€ì— ì“°ë ˆë“œê°€ ì—†ì–´ì„œ, ê° í”Œëž«í¼ ë§ˆë‹¤ ë‹¤ë¥¸ êµ¬í˜„ì„ ì‚¬ìš©(windows ->CreateThread ë¡œ ì“°ë ˆë“œë¥¼ ìƒì„± /  Linux -> pthread_create) => Previously, there was no thread in the C++ standard, so different implementations were used for each platform (windows-> CreateThread creates a thread / Linux-> pthread_create)
+
+// ë¦¬ëˆ…ìŠ¤ì—ì„œ ì»´íŒŒì¼ ->  ì»´íŒŒì¼ ì˜µì…˜ì— -pthread ë¥¼ ì¶”ê°€) In Linux compile-> add -pthread to option)
 void func1() {
 	for (int i = 0; i < 10; i++) {
-		cout << "¾²·¹µå1 ÀÛµ¿Áß ! \n";
+		cout << "ì“°ë ˆë“œ1 ìž‘ë™ì¤‘ ! \n";
 	}
 }
 
 void func2() {
 	for (int i = 0; i < 10; i++) {
-		cout << "¾²·¹µå2 ÀÛµ¿Áß ! \n";
+		cout << "ì“°ë ˆë“œ2 ìž‘ë™ì¤‘ ! \n";
 	}
 }
 
 void func3() {
 	for (int i = 0; i < 10; i++) {
-		cout << "¾²·¹µå3 ÀÛµ¿Áß ! \n";
+		cout << "ì“°ë ˆë“œ3 ìž‘ë™ì¤‘ ! \n";
 	}
 }
 
 int main() {
-	thread t1(func1); // thread allocation and execution ¾²·¹µå ÇÒ´ç ½ÇÇà
-	thread t2(func2); // thread allocation and execution ¾²·¹µå ÇÒ´ç ½ÇÇà
-	thread t3(func3); // thread allocation and execution ¾²·¹µå ÇÒ´ç ½ÇÇà
+	thread t1(func1); // thread allocation and execution ì“°ë ˆë“œ í• ë‹¹ ì‹¤í–‰
+	thread t2(func2); // thread allocation and execution ì“°ë ˆë“œ í• ë‹¹ ì‹¤í–‰
+	thread t3(func3); // thread allocation and execution ì“°ë ˆë“œ í• ë‹¹ ì‹¤í–‰
 
-	t1.join(); // thread end -> return ¾²·¹µå Á¾·á ½Ã ¸®ÅÏ 
-	t2.join(); // thread end -> return ¾²·¹µå Á¾·á ½Ã ¸®ÅÏ
-	t3.join(); // thread end -> return ¾²·¹µå Á¾·á ½Ã ¸®ÅÏ
+	t1.join(); // thread end -> return ì“°ë ˆë“œ ì¢…ë£Œ ì‹œ ë¦¬í„´ 
+	t2.join(); // thread end -> return ì“°ë ˆë“œ ì¢…ë£Œ ì‹œ ë¦¬í„´
+	t3.join(); // thread end -> return ì“°ë ˆë“œ ì¢…ë£Œ ì‹œ ë¦¬í„´
 
 	/*
 	t1.detach();
 	t2.detach();
 	t3.detach();
 	*/
-	cout << "¸ÞÀÎ ÇÔ¼ö Á¾·á" << endl;
+	cout << "ë©”ì¸ í•¨ìˆ˜ ì¢…ë£Œ" << endl;
 
 }
